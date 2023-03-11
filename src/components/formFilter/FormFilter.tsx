@@ -30,7 +30,6 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           label="Age"
           onChange={handleOption}
           value={data.age}
-          name="age"
           isLoading={isLoading}
           placeholder="select age"
         />
@@ -39,7 +38,6 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           label="State"
           onChange={handleOption}
           value={data.state}
-          name="state"
           isLoading={isLoading}
           placeholder="select state"
         />
@@ -48,7 +46,6 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           label="Level"
           onChange={handleOption}
           value={data.level}
-          name="level"
           isLoading={isLoading}
           placeholder="select level"
         />
@@ -57,7 +54,6 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           label="Gender"
           onChange={handleOption}
           value={data.gender}
-          name="gender"
           isLoading={isLoading}
           placeholder="select gender"
         />

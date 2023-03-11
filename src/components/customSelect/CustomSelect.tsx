@@ -8,7 +8,6 @@ interface CustomSelectProps {
   label: string;
   onChange: (e: SingleValue<OptionType>) => void;
   value?: string | number;
-  name: string;
   isLoading?: boolean;
   placeholder: string;
 }
@@ -18,7 +17,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   label,
   onChange,
   value,
-  name,
   isLoading,
   placeholder,
 }) => {
@@ -41,7 +39,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       marginTop: '-5px',
       boxShadow: state.isFocused ? 'none' : 'none',
     }),
-    option: (base: any, state: any) => ({
+    option: (base, state) => ({
       ...base,
       color: '#7a869a',
       background:
@@ -51,42 +49,42 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       cursor: 'pointer',
     }),
 
-    singleValue: (base: any, state: any) => ({
+    singleValue: (base, state) => ({
       ...base,
       color: '#7a869a',
       fontSize: '14px',
       background: 'transparent',
     }),
 
-    placeholder: (base: any, state: any) => ({
+    placeholder: (base, state) => ({
       ...base,
       color: '#adb7be',
       fontSize: '14px',
     }),
 
-    valueContainer: (base: any, state: any) => ({
+    valueContainer: (base, state) => ({
       ...base,
       padding: '0 10px',
     }),
 
-    input: (base: any, state: any) => ({
+    input: (base, state) => ({
       ...base,
       color: '#7a869a',
       fontSize: '14px',
     }),
 
-    noOptionsMessage: (base: any, state: any) => ({
+    noOptionsMessage: (base, state) => ({
       ...base,
       color: '#7a869a',
       fontSize: '14px',
     }),
 
-    menuList: (base: any, state: any) => ({
+    menuList: (base, state) => ({
       ...base,
       padding: '0',
     }),
 
-    container: (base: any, state: any) => ({
+    container: (base, state) => ({
       ...base,
       width: '100%',
     }),
