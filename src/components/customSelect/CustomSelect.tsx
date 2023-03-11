@@ -2,10 +2,10 @@ import React from 'react';
 import styles from './customSelect.module.scss';
 
 interface CustomSelectProps {
-  options: { value: string; label: string }[];
+  options: { value: string | number; label: string }[];
   label: string;
   handleChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
-  value: string;
+  value: string | number;
   name: string;
 }
 

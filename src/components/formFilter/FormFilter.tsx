@@ -1,4 +1,10 @@
 import React from 'react';
+import {
+  genderOptions,
+  getAgeOptions,
+  levelOptions,
+  stateOptions,
+} from '../../utils/utils';
 import CustomSelect from '../customSelect/CustomSelect';
 import styles from './formFilter.module.scss';
 
@@ -9,55 +15,34 @@ const FormFilter: React.FC<FormFilterProps> = () => {
       <h2>Filter Student Table By:</h2>
       <form>
         <CustomSelect
-          options={[
-            { value: 'male', label: 'Male' },
-            { value: 'female', label: 'Female' },
-          ]}
-          label="Gender"
+          options={getAgeOptions()}
+          label="Age"
           handleChange={() => {}}
-          value="male"
-          name="gender"
+          value={getAgeOptions()[0].value}
+          name="age"
         />
         <CustomSelect
-          options={[
-            { value: 'male', label: 'Male' },
-            { value: 'female', label: 'Female' },
-          ]}
-          label="Gender"
+          options={stateOptions}
+          label="State"
           handleChange={() => {}}
-          value="male"
-          name="gender"
+          value={stateOptions[0].value}
+          name="state"
         />
         <CustomSelect
-          options={[
-            { value: 'male', label: 'Male' },
-            { value: 'female', label: 'Female' },
-          ]}
-          label="Gender"
+          options={levelOptions}
+          label="Level"
           handleChange={() => {}}
-          value="male"
-          name="gender"
+          value={levelOptions[0].value}
+          name="level"
         />
         <CustomSelect
-          options={[
-            { value: 'male', label: 'Male' },
-            { value: 'female', label: 'Female' },
-          ]}
+          options={genderOptions}
           label="Gender"
           handleChange={() => {}}
-          value="male"
+          value={genderOptions[0].value}
           name="gender"
         />
-        <CustomSelect
-          options={[
-            { value: 'male', label: 'Male' },
-            { value: 'female', label: 'Female' },
-          ]}
-          label="Gender"
-          handleChange={() => {}}
-          value="male"
-          name="gender"
-        />
+        <button>Search</button>
       </form>
     </section>
   );
