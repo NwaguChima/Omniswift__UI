@@ -1,0 +1,45 @@
+@use '../../styles/variables.scss' as var;
+
+.select {
+  fieldset {
+    border: 1px solid var.$light_text;
+    height: 4.9rem;
+
+    @media screen and (max-width: var.$tablet) {
+      height: 5.7rem;
+    }
+
+    border-radius: var.$radius;
+    -webkit-border-radius: var.$radius;
+    -moz-border-radius: var.$radius;
+    -ms-border-radius: var.$radius;
+    -o-border-radius: var.$radius;
+
+    position: relative;
+
+    legend {
+      margin-left: 0.7rem;
+      color: var.$dark_text;
+      font-size: 1.4rem;
+      padding: 0 0.5rem;
+      z-index: 10000000 !important;
+    }
+  }
+}
+
+.select__holder {
+  width: 100%;
+  height: 100%;
+
+  select {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    color: var.$light_text;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

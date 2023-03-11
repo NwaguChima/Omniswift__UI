@@ -14,4 +14,11 @@ $light_text: #adb7be;
 $green: #46c35f;
 $blue: #0d7590;
 
-$transition: all 0.3s linear;
+$transition: all 0.3s ease-in-out;
+$radius: 3px;
+
+// screen sizes
+$mobile: 700px;
+$tablet: 1000px;
+$desktop: 1200px;
+$large_desktop: 1400px;

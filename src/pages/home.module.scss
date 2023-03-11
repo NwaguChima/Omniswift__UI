@@ -1,0 +1,18 @@
+@use '../styles/variables.scss' as var;
+
+.home {
+  padding: 5rem;
+
+  @media screen and (max-width: var.$tablet) {
+    padding: 2rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+    font-weight: 900;
+
+    @media screen and (max-width: var.$tablet) {
+      font-size: 3rem;
+    }
+  }
+}

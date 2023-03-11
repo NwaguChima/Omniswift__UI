@@ -1,0 +1,74 @@
+@use '../../styles/variables.scss' as var;
+
+.formFilter {
+  padding: 3rem 2rem;
+  background-color: var.$white_bg;
+  margin-top: 4rem;
+
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+    color: var.$mid_text;
+
+    @media screen and (max-width: var.$tablet) {
+      font-size: 2rem;
+    }
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    gap: 2rem;
+
+    @media screen and (max-width: var.$mobile) {
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    }
+  }
+
+  button {
+    background: none;
+    background-color: var.$green;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 1.4rem;
+    height: 4.1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+
+    border-radius: var.$radius;
+    -webkit-border-radius: var.$radius;
+    -moz-border-radius: var.$radius;
+    -ms-border-radius: var.$radius;
+    -o-border-radius: var.$radius;
+
+    transition: var.$transition;
+    -webkit-transition: var.$transition;
+    -moz-transition: var.$transition;
+    -ms-transition: var.$transition;
+    -o-transition: var.$transition;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    &:hover {
+      transform: translateY(-1px);
+      -webkit-transform: translateY(-1px);
+      -moz-transform: translateY(-1px);
+      -ms-transform: translateY(-1px);
+      -o-transform: translateY(-1px);
+    }
+
+    &:active {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.03);
+      transform: translateY(-0.5px);
+      -webkit-transform: translateY(-0.5px);
+      -moz-transform: translateY(-0.5px);
+      -ms-transform: translateY(-0.5px);
+      -o-transform: translateY(-0.5px);
+    }
+  }
+}
