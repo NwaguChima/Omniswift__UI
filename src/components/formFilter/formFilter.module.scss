@@ -1,0 +1,27 @@
+@use '../../styles/variables.scss' as var;
+
+.formFilter {
+  padding: 3rem 2rem;
+  background-color: var.$white_bg;
+  margin-top: 4rem;
+
+  h2 {
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin-bottom: 4rem;
+
+    @media screen and (max-width: var.$tablet) {
+      font-size: 2rem;
+    }
+  }
+
+  form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2rem;
+
+    @media screen and (max-width: var.$mobile) {
+      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    }
+  }
+}
