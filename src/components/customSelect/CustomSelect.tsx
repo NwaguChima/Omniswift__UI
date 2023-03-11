@@ -1,17 +1,12 @@
 import React from 'react';
-import Select, { SingleValue } from 'react-select';
+import Select, { GroupBase, SingleValue, StylesConfig } from 'react-select';
+import { OptionType } from '../../utils/utils';
 import styles from './customSelect.module.scss';
 
 interface CustomSelectProps {
-  options: { value: string | number; label: string; name: string }[];
+  options: OptionType[];
   label: string;
-  onChange: (
-    e: SingleValue<{
-      value: string | number;
-      label: string;
-      name: string;
-    }>
-  ) => void;
+  onChange: (e: SingleValue<OptionType>) => void;
   value?: string | number;
   name: string;
   isLoading?: boolean;
@@ -28,14 +23,14 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   placeholder,
 }) => {
   const defaultValue = (
-    options: { value: string | number; label: string; name: string }[],
+    options: OptionType[],
     value: string | number | undefined
   ) => {
     return options ? options.find((option) => option.value === value) : '';
   };
 
-  const selectStyles = {
-    control: (base: any, state: any) => ({
+  const selectStyles: StylesConfig<OptionType, false, GroupBase<OptionType>> = {
+    control: (base, state) => ({
       ...base,
       width: '100%',
       color: '#7a869a',

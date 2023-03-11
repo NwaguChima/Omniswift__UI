@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { SingleValue } from 'react-select';
 import {
+  DataType,
+  defaultData,
   genderOptions,
   getAgeOptions,
   levelOptions,
+  OptionType,
   stateOptions,
 } from '../../utils/utils';
 import CustomSelect from '../customSelect/CustomSelect';
@@ -11,26 +14,10 @@ import styles from './formFilter.module.scss';
 
 interface FormFilterProps {}
 const FormFilter: React.FC<FormFilterProps> = () => {
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [data, setData] = useState<{
-    age: string;
-    state: string;
-    level: string;
-    gender: string;
-  }>({
-    age: '',
-    state: '',
-    level: '',
-    gender: '',
-  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState<DataType>(defaultData);
 
-  function handleOption(
-    option: SingleValue<{
-      value: string | number;
-      label: string;
-      name: string | undefined;
-    }>
-  ) {
+  function handleOption(option: SingleValue<OptionType>) {
     setData({ ...data, [option?.name as string]: option?.value });
   }
 

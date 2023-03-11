@@ -61,3 +61,23 @@ export const stateOptions = [
   { value: 'zamfara', label: 'Zamfara', name: 'state' },
   { value: 'fct', label: 'FCT', name: 'state' },
 ];
+
+export interface OptionType {
+  value: string | number;
+  label: string;
+  name: string;
+}
+
+export interface DataType {
+  age: string;
+  level: string;
+  gender: string;
+  state: string;
+}
+
+export const defaultData: DataType = {
+  age: '',
+  state: '',
+  level: '',
+  gender: '',
+};
