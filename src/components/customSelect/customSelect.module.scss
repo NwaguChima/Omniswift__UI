@@ -2,8 +2,8 @@
 
 .select {
   fieldset {
-    border: 1px solid #c4c4c4;
-    height: 3.9rem;
+    border: 1px solid var.$light_text;
+    height: 4.5rem;
 
     border-radius: var.$radius;
     -webkit-border-radius: var.$radius;
@@ -22,7 +22,6 @@
     }
 
     &:focus-within {
-      // border: 1px solid red;
       border: none;
 
       legend {
@@ -43,6 +42,7 @@
     height: 100%;
     padding: 0;
     border: 0;
+    color: var.$light_text;
 
     &:focus {
       outline: none;

@@ -42,7 +42,7 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           value={genderOptions[0].value}
           name="gender"
         />
-        <button>Search</button>
+        <button type="submit">Search</button>
       </form>
     </section>
   );
