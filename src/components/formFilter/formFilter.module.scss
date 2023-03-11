@@ -22,7 +22,7 @@
     gap: 2rem;
 
     @media screen and (max-width: var.$mobile) {
-      grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     }
   }
 
@@ -33,7 +33,7 @@
     cursor: pointer;
     border: none;
     font-size: 1.4rem;
-    height: 4rem;
+    height: 4.1rem;
     font-weight: 400;
     letter-spacing: 0.5px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
