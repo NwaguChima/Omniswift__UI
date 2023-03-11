@@ -3,12 +3,13 @@ import Select, { SingleValue } from 'react-select';
 import styles from './customSelect.module.scss';
 
 interface CustomSelectProps {
-  options: { value: string | number; label: string }[];
+  options: { value: string | number; label: string; name: string }[];
   label: string;
   onChange: (
     e: SingleValue<{
       value: string | number;
       label: string;
+      name: string;
     }>
   ) => void;
   value?: string | number;
@@ -27,7 +28,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   placeholder,
 }) => {
   const defaultValue = (
-    options: { value: string | number; label: string }[],
+    options: { value: string | number; label: string; name: string }[],
     value: string | number | undefined
   ) => {
     return options ? options.find((option) => option.value === value) : '';
@@ -48,7 +49,8 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     option: (base: any, state: any) => ({
       ...base,
       color: '#7a869a',
-      background: state.isFocused ? '#e5e5e5' : 'transparent',
+      background:
+        state.isFocused || state.isSelected ? '#e5e5e5' : 'transparent',
       fontSize: '14px',
       padding: '10px',
       cursor: 'pointer',
@@ -58,6 +60,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       ...base,
       color: '#7a869a',
       fontSize: '14px',
+      background: 'transparent',
     }),
 
     placeholder: (base: any, state: any) => ({

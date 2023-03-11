@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SingleValue } from 'react-select';
 import {
   genderOptions,
   getAgeOptions,
@@ -11,7 +12,27 @@ import styles from './formFilter.module.scss';
 interface FormFilterProps {}
 const FormFilter: React.FC<FormFilterProps> = () => {
   const [isLoading, setIsLoading] = React.useState(false);
-  const [value, setValue] = useState(undefined);
+  const [data, setData] = useState<{
+    age: string;
+    state: string;
+    level: string;
+    gender: string;
+  }>({
+    age: '',
+    state: '',
+    level: '',
+    gender: '',
+  });
+
+  function handleOption(
+    option: SingleValue<{
+      value: string | number;
+      label: string;
+      name: string | undefined;
+    }>
+  ) {
+    setData({ ...data, [option?.name as string]: option?.value });
+  }
 
   return (
     <section className={styles.formFilter}>
@@ -20,8 +41,8 @@ const FormFilter: React.FC<FormFilterProps> = () => {
         <CustomSelect
           options={getAgeOptions()}
           label="Age"
-          onChange={() => {}}
-          value={value}
+          onChange={handleOption}
+          value={data.age}
           name="age"
           isLoading={isLoading}
           placeholder="select age"
@@ -29,8 +50,8 @@ const FormFilter: React.FC<FormFilterProps> = () => {
         <CustomSelect
           options={stateOptions}
           label="State"
-          onChange={() => {}}
-          //   value={stateOptions[0].value}
+          onChange={handleOption}
+          value={data.state}
           name="state"
           isLoading={isLoading}
           placeholder="select state"
@@ -38,8 +59,8 @@ const FormFilter: React.FC<FormFilterProps> = () => {
         <CustomSelect
           options={levelOptions}
           label="Level"
-          onChange={() => {}}
-          value={levelOptions[0].value}
+          onChange={handleOption}
+          value={data.level}
           name="level"
           isLoading={isLoading}
           placeholder="select level"
@@ -47,8 +68,8 @@ const FormFilter: React.FC<FormFilterProps> = () => {
         <CustomSelect
           options={genderOptions}
           label="Gender"
-          onChange={() => {}}
-          value={genderOptions[0].value}
+          onChange={handleOption}
+          value={data.gender}
           name="gender"
           isLoading={isLoading}
           placeholder="select gender"
