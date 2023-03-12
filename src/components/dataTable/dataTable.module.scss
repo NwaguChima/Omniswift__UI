@@ -1,0 +1,6 @@
+@use '../../styles/variables.scss' as var;
+
+.dataTable {
+  background-color: var.$white_bg;
+  margin-top: 3rem;
+}

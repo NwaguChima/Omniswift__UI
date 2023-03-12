@@ -1,4 +1,5 @@
 import React from 'react';
+import DataTable from '../components/dataTable/DataTable';
 import FormFilter from '../components/formFilter/FormFilter';
 import styles from './home.module.scss';
 
@@ -12,6 +13,7 @@ const Home: React.FC<HomeProps> = () => {
       </header>
       <main>
         <FormFilter />
+        <DataTable />
       </main>
     </div>
   );
