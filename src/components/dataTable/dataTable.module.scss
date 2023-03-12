@@ -1,7 +1,7 @@
-@use '../../styles/variables.scss' as varr;
+@use '../../styles/variables.scss' as var;
 
 .table__container {
-  background-color: varr.$white_bg;
+  background-color: var.$white_bg;
   margin-top: 3rem;
   padding: 3rem 3rem;
 
@@ -37,7 +37,7 @@
 
       padding: 18px 25px;
       white-space: nowrap;
-      background-color: varr.$table-head__bg;
+      background-color: var.$table-head__bg;
       letter-spacing: 0.75px;
     }
   }
@@ -74,10 +74,33 @@ table {
 .action {
   font-size: 1.2rem;
   padding: 1rem;
-  color: varr.$white_bg;
-  background-color: varr.$green;
+  color: var.$white_bg;
+  background-color: var.$green;
   cursor: pointer;
   display: flex;
   justify-content: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table__wrapper::-webkit-scrollbar {
+  width: 1.8rem;
+}
+
+.table__wrapper::-webkit-scrollbar-track {
+  background: #f8f8f8;
+}
+
+.table__wrapper::-webkit-scrollbar-thumb {
+  background: var.$green;
+  border-radius: 1rem;
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+
+  border: 0.47rem solid #f8f8f8;
+}
+
+.table__wrapper::-webkit-scrollbar-thumb:vertical {
+  height: 156px; /* Adjust as needed */
 }
