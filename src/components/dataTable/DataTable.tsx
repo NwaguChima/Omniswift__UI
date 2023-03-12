@@ -17,8 +17,8 @@ const DataTable: React.FC<DataTableProps> = ({ data, columns }) => {
     tableInstance;
 
   return (
-    <section className={styles.dataTable}>
-      <table className={styles.dataTable__table} {...getTableProps()}>
+    <section className={styles.table__container}>
+      <table className={styles.table} {...getTableProps()}>
         <thead className={styles.table__head}>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
