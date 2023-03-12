@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export function getAgeOptions() {
   const ageOptions = [];
   for (let i = 12; i <= 60; i++) {
@@ -81,41 +83,3 @@ export const defaultData: DataType = {
   level: '',
   gender: '',
 };
-
-export function getTableColumns() {
-  return [
-    {
-      Header: 'S/N',
-      accessor: 'id',
-    },
-    {
-      Header: 'Surname',
-      accessor: 'surname',
-    },
-    {
-      Header: 'First Name',
-      accessor: 'first_name',
-    },
-    {
-      Header: 'Age',
-      accessor: 'age',
-    },
-    {
-      Header: 'Gender',
-      accessor: 'gender',
-    },
-    {
-      Header: 'Level',
-      accessor: 'level',
-    },
-    {
-      Header: 'State',
-      accessor: 'state',
-    },
-    {
-      Header: 'Action',
-      accessor: 'action',
-      Cell: ({ row }: any) => {},
-    },
-  ];
-}

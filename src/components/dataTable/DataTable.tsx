@@ -23,11 +23,17 @@ const DataTable: React.FC<DataTableProps> = ({ data, columns }) => {
           <thead className={styles.table__head}>
             {headerGroups.map((headerGroup) => (
               <tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
-                  <th {...column.getHeaderProps()}>
-                    {column.render('Header')}
-                  </th>
-                ))}
+                {headerGroup.headers.map((column) => {
+                  let actionStyle = column?.Header === 'Action' ? 'center' : '';
+                  return (
+                    <th
+                      className={styles[actionStyle]}
+                      {...column.getHeaderProps()}
+                    >
+                      {column.render('Header')}
+                    </th>
+                  );
+                })}
               </tr>
             ))}
           </thead>
@@ -36,7 +42,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, columns }) => {
               prepareRow(row);
 
               return (
-                <tr className={''} {...row.getRowProps()}>
+                <tr {...row.getRowProps()}>
                   {row.cells.map((cell) => {
                     return (
                       <td {...cell.getCellProps()}>{cell.render('Cell')}</td>

@@ -1,8 +1,8 @@
 import React from 'react';
 import DataTable from '../components/dataTable/DataTable';
 import FormFilter from '../components/formFilter/FormFilter';
+import { getTableColumns } from '../utils/columns';
 import { dummyData } from '../utils/dummy';
-import { getTableColumns } from '../utils/utils';
 import styles from './home.module.scss';
 
 interface HomeProps {}

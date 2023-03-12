@@ -44,13 +44,12 @@
 
   &__body {
     tr {
-      cursor: pointer;
-      border-bottom: 0.6px solid rgba(38, 50, 56, 0.26);
+      border-bottom: 1px solid #ececec;
 
       td {
         font-size: 14px;
         line-height: 22px;
-        padding: 28px 25px;
+        padding: 25px 25px;
         white-space: nowrap;
 
         overflow: hidden;
@@ -64,4 +63,21 @@
 
 table {
   border-spacing: 0;
+  border-collapse: collapse;
+  width: 98.5% !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.action {
+  font-size: 1.2rem;
+  padding: 1rem;
+  color: varr.$white_bg;
+  background-color: varr.$green;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
