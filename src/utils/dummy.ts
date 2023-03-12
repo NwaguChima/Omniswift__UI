@@ -1,6 +1,6 @@
 export const dummyData = [
   {
-    id: 1,
+    id: '01',
     first_name: 'Haroun',
     surname: 'Galiford',
     age: 29,
@@ -9,7 +9,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 2,
+    id: '02',
     first_name: 'Reginauld',
     surname: 'McDonell',
     age: 15,
@@ -18,7 +18,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 3,
+    id: '03',
     first_name: 'Callie',
     surname: 'Gornar',
     age: 36,
@@ -27,7 +27,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 4,
+    id: '04',
     first_name: 'Carline',
     surname: 'McEneny',
     age: 26,
@@ -36,7 +36,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 5,
+    id: '05',
     first_name: 'Jeno',
     surname: 'Dodd',
     age: 22,
@@ -45,7 +45,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 6,
+    id: '06',
     first_name: 'Ferrell',
     surname: 'Revely',
     age: 22,
@@ -54,7 +54,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 7,
+    id: '07',
     first_name: 'Brittani',
     surname: 'Twidale',
     age: 38,
@@ -63,7 +63,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 8,
+    id: '08',
     first_name: 'Alyosha',
     surname: 'Selcraig',
     age: 22,
@@ -72,7 +72,7 @@ export const dummyData = [
     state: 1,
   },
   {
-    id: 9,
+    id: '09',
     first_name: 'Inger',
     surname: 'Dean',
     age: 30,

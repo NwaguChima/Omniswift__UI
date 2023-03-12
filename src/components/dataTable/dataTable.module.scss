@@ -3,41 +3,49 @@
 .table__container {
   background-color: varr.$white_bg;
   margin-top: 3rem;
-  padding: 4rem 2rem;
+  padding: 3rem 3rem;
 
   width: 100%;
-  overflow: scroll;
-  height: 70vh;
 
-  border: 0.5px solid #f9fafb;
   box-shadow: 0px 0px 8px rgba(38, 50, 56, 0.07);
+}
+
+.table__wrapper {
+  overflow: scroll;
+  height: 60vh !important;
 }
 
 .table {
   width: 100%;
+  position: relative;
 
   @media only screen and (max-width: 1300px) {
     width: 1150px;
   }
 
   &__head {
+    position: sticky;
+    top: 0;
+    width: 90% !important;
+
     th {
       text-align: start;
       font-weight: 600;
-      font-size: 16px;
-      line-height: 22px;
+      font-size: 14px;
+      line-height: 17px;
       padding-bottom: 18px;
 
-      border-bottom: 0.6px solid rgba(38, 50, 56, 0.26);
       padding: 18px 25px;
       white-space: nowrap;
+      background-color: varr.$table-head__bg;
+      letter-spacing: 0.75px;
     }
   }
 
   &__body {
     tr {
-      border-bottom: 0.6px solid rgba(38, 50, 56, 0.26);
       cursor: pointer;
+      border-bottom: 0.6px solid rgba(38, 50, 56, 0.26);
 
       td {
         font-size: 14px;
@@ -48,77 +56,12 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 180px !important;
+        letter-spacing: 0.75px;
       }
     }
   }
 }
 
-.table__active:hover,
-.table__active:active {
-  background-color: varr.$green;
-}
-
-.table__inactive:hover,
-.table__inactive:active {
-  background-color: varr.$green;
-}
-
-.table__Pending--transactions:hover {
-  background-color: varr.$green;
-}
-
-.table__success--transactions:hover {
-  background-color: varr.$green;
-}
-
-.table__Failed--transactions:hover {
-  background-color: varr.$green;
-}
-
-.paginationContainer {
-  margin-top: 30px;
-  height: 40px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.pagination {
-  height: 100%;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-
-  box-shadow: 0px 0px 5px rgba(38, 50, 56, 0.08);
-  border: 0.5px solid rgba(255, 99, 47, 0.5);
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    height: 25px;
-    min-width: 25px;
-    cursor: pointer;
-
-    border: 1px solid transparent;
-    border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    -ms-border-radius: 3px;
-    -o-border-radius: 3px;
-
-    a {
-      color: varr.$grey_bg;
-    }
-
-    &.active {
-      border: 1px solid #fa6800;
-    }
-  }
+table {
+  border-spacing: 0;
 }
