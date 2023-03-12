@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 export function getAgeOptions() {
   const ageOptions = [];
   for (let i = 12; i <= 60; i++) {
