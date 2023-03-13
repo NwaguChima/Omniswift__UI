@@ -36,7 +36,7 @@ const Home: React.FC<HomeProps> = () => {
       content = (
         <>
           <DataTable data={data} columns={getTableColumns()} />
-          <div className={styles.error}>Error: {`${error}`}</div>
+          <div className={styles.error}>{`${error}`}</div>
         </>
       );
     }
