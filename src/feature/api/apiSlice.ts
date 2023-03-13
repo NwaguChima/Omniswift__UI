@@ -71,11 +71,14 @@ export const apiSlice = createApi({
     }),
 
     filterStudents: builder.mutation({
-      query: (filter: any) => ({
-        url: 'filterData',
-        method: 'POST',
-        body: filter,
-      }),
+      query: (filter: any) => {
+        console.log('------*****____-----', filter);
+        return {
+          url: 'filterData',
+          method: 'POST',
+          body: filter,
+        };
+      },
       invalidatesTags: ['Students'],
     }),
 

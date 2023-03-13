@@ -10,12 +10,16 @@ import {
   useGetGenderOptionsQuery,
   useGetLevelsOptionsQuery,
   useGetStatesOptionsQuery,
+  useFilterStudentsMutation,
 } from '../../feature/api/apiSlice';
+import { toast } from 'react-toastify';
 
 interface FormFilterProps {}
 const FormFilter: React.FC<FormFilterProps> = () => {
   const filters = useSelector(selectFilter);
   const dispatch = useDispatch();
+  const [filterStudents, { isLoading: filterIsLoading }] =
+    useFilterStudentsMutation();
 
   function handleOption(option: SingleValue<OptionType>) {
     dispatch(setFilter(option as ISetFilterPayload));
@@ -50,10 +54,22 @@ const FormFilter: React.FC<FormFilterProps> = () => {
     console.log('error');
   }
 
+  async function handleFilter(e: any) {
+    e.preventDefault();
+    let canSubmit = Object.values(filters).some(Boolean);
+
+    if (!canSubmit) {
+      toast.error('Please select at least one filter');
+      return;
+    }
+    console.log('response===--->>>>>>.', canSubmit);
+    // const response = await filterStudents(filters);
+  }
+
   return (
     <section className={styles.formFilter}>
       <h2>Filter Student Table By:</h2>
-      <form>
+      <form onSubmit={handleFilter}>
         <CustomSelect
           options={ages}
           label="Age"
