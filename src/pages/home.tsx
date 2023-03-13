@@ -10,6 +10,7 @@ import FormFilter from '../components/formFilter/FormFilter';
 import { getTableColumns } from '../utils/columns';
 import styles from './home.module.scss';
 import Spinner from '../components/spinner/Spinner';
+import Result from '../components/result/Result';
 
 interface HomeProps {}
 
@@ -51,6 +52,7 @@ const Home: React.FC<HomeProps> = () => {
         <FormFilter />
         {content}
       </main>
+      <Result />
     </div>
   );
 };
