@@ -10,6 +10,7 @@ import { useGetStudentsQuery } from '../feature/api/apiSlice';
 import { getTableColumns } from '../utils/columns';
 import { dummyData } from '../utils/dummy';
 import styles from './home.module.scss';
+import Spinner from '../components/spinner/Spinner';
 
 interface HomeProps {}
 
@@ -24,7 +25,20 @@ const Home: React.FC<HomeProps> = () => {
     isError,
   } = useGetStudentsQuery('');
 
-  console.log('students---------->>>>>.', students);
+  let content;
+
+  if (isError) {
+    console.log('error');
+    content = <div className={styles.error}>Error: {`${error}`}</div>;
+  } else if (isLoading) {
+    content = (
+      <div className={styles.loadingText}>
+        <Spinner />
+      </div>
+    );
+  } else if (isSuccess) {
+    content = <DataTable data={students} columns={getTableColumns()} />;
+  }
 
   return (
     <div className={styles.home}>
@@ -33,9 +47,7 @@ const Home: React.FC<HomeProps> = () => {
       </header>
       <main>
         <FormFilter />
-        {!isLoading && !isError && (
-          <DataTable data={students} columns={getTableColumns()} />
-        )}
+        {content}
       </main>
     </div>
   );
