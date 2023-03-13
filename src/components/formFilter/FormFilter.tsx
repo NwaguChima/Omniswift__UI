@@ -50,7 +50,7 @@ const FormFilter: React.FC<FormFilterProps> = () => {
   } = useGetLevelsOptionsQuery('');
 
   if (agesIsError || statesIsError || genderIsError || levelsIsError) {
-    console.log('error');
+    toast.error('Error fetching filter options');
   }
 
   async function handleFilter(e: any) {
