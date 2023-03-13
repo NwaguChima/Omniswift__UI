@@ -1,43 +1,36 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
-  fetchStudentList,
+  selectStudentError,
   selectStudentList,
+  selectStudentStatus,
 } from '../feature/student/studentSlice';
 import DataTable from '../components/dataTable/DataTable';
 import FormFilter from '../components/formFilter/FormFilter';
-import { useGetStudentsQuery } from '../feature/api/apiSlice';
 import { getTableColumns } from '../utils/columns';
-import { dummyData } from '../utils/dummy';
 import styles from './home.module.scss';
 import Spinner from '../components/spinner/Spinner';
 
 interface HomeProps {}
 
 const Home: React.FC<HomeProps> = () => {
-  const dispatch = useDispatch();
-
-  const {
-    data: students,
-    error,
-    isLoading,
-    isSuccess,
-    isError,
-  } = useGetStudentsQuery('');
+  const data = useSelector(selectStudentList);
+  const status = useSelector(selectStudentStatus);
+  const error = useSelector(selectStudentError);
 
   let content;
 
-  if (isError) {
+  if (status === 'failed') {
     console.log('error');
     content = <div className={styles.error}>Error: {`${error}`}</div>;
-  } else if (isLoading) {
+  } else if (status === 'loading' || status === 'idle') {
     content = (
       <div className={styles.loadingText}>
         <Spinner />
       </div>
     );
-  } else if (isSuccess) {
-    content = <DataTable data={students} columns={getTableColumns()} />;
+  } else if (status === 'success') {
+    content = <DataTable data={data} columns={getTableColumns()} />;
   }
 
   return (
