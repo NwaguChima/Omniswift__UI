@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { DataType, defaultData, ISetFilterPayload } from '../../utils/utils';
+import { apiSlice } from '../api/apiSlice';
+import {
+  defaultFilterData,
+  IFilters,
+  ISetFilterPayload,
+} from '../../utils/utils';
 
-const initialState: DataType = defaultData;
+const initialState: IFilters = defaultFilterData;
 
 export const filterSlice = createSlice({
   name: 'filter',

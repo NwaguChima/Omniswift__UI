@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTable } from 'react-table';
-import { useGetStudentsQuery } from '../../feature/api/apiSlice';
+// import { useGetStudentsQuery } from '../../feature/api/apiSlice';
 import styles from './dataTable.module.scss';
 
 interface DataTableProps {
@@ -14,13 +14,13 @@ const DataTable: React.FC<DataTableProps> = ({ data, columns }) => {
     columns,
   });
 
-  const {
-    data: students,
-    error,
-    isLoading,
-    isSuccess,
-    isError,
-  } = useGetStudentsQuery();
+  // const {
+  //   data: students,
+  //   error,
+  //   isLoading,
+  //   isSuccess,
+  //   isError,
+  // } = useGetStudentsQuery();
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
