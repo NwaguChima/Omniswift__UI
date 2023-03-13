@@ -1,25 +1,29 @@
 import React, { useState } from 'react';
 import { SingleValue } from 'react-select';
 import {
-  DataType,
-  defaultData,
   genderOptions,
   getAgeOptions,
+  ISetFilterPayload,
   levelOptions,
   OptionType,
   stateOptions,
 } from '../../utils/utils';
 import CustomSelect from '../customSelect/CustomSelect';
 import styles from './formFilter.module.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectFilter, setFilter } from '../../feature/filter/filterSlice';
 
 interface FormFilterProps {}
 const FormFilter: React.FC<FormFilterProps> = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState<DataType>(defaultData);
+  const filters = useSelector(selectFilter);
+  const dispatch = useDispatch();
 
   function handleOption(option: SingleValue<OptionType>) {
-    setData({ ...data, [option?.name as string]: option?.value });
+    dispatch(setFilter(option as ISetFilterPayload));
   }
+
+  console.log('filters', filters);
 
   return (
     <section className={styles.formFilter}>
@@ -29,7 +33,7 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           options={getAgeOptions()}
           label="Age"
           onChange={handleOption}
-          value={data.age}
+          value={filters.age}
           isLoading={isLoading}
           placeholder="select age"
         />
@@ -37,7 +41,7 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           options={stateOptions}
           label="State"
           onChange={handleOption}
-          value={data.state}
+          value={filters.state}
           isLoading={isLoading}
           placeholder="select state"
         />
@@ -45,7 +49,7 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           options={levelOptions}
           label="Level"
           onChange={handleOption}
-          value={data.level}
+          value={filters.level}
           isLoading={isLoading}
           placeholder="select level"
         />
@@ -53,7 +57,7 @@ const FormFilter: React.FC<FormFilterProps> = () => {
           options={genderOptions}
           label="Gender"
           onChange={handleOption}
-          value={data.gender}
+          value={filters.gender}
           isLoading={isLoading}
           placeholder="select gender"
         />

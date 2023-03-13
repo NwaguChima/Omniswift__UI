@@ -71,7 +71,7 @@ export interface OptionType {
 }
 
 export interface DataType {
-  age: string;
+  age: string | number;
   level: string;
   gender: string;
   state: string;
@@ -83,3 +83,8 @@ export const defaultData: DataType = {
   level: '',
   gender: '',
 };
+
+export interface ISetFilterPayload {
+  name: keyof DataType;
+  value: string | number;
+}
