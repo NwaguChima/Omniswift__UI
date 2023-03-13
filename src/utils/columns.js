@@ -12,7 +12,7 @@ export function getTableColumns() {
     },
     {
       Header: 'First Name',
-      accessor: 'first_name',
+      accessor: 'firstname',
     },
     {
       Header: 'Age',
@@ -26,7 +26,12 @@ export function getTableColumns() {
       Header: 'Level',
       accessor: 'level',
       Cell: ({ row }) => {
-        return `${row.original.level} level`;
+        let value = row.original.level;
+        if (typeof value === 'number') {
+          value = `${value}00 Level`;
+        }
+
+        return value;
       },
     },
     {

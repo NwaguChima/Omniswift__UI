@@ -64,6 +64,9 @@ export const apiSlice = createApi({
 
     getStudents: builder.query({
       query: () => 'viewAllData',
+      transformResponse: (response: any) => {
+        return response.data?.students;
+      },
       providesTags: ['Students'],
     }),
 
