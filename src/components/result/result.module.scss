@@ -50,3 +50,27 @@
     height: 15rem;
   }
 }
+
+.resultBody {
+  margin-top: 7rem;
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    &__left,
+    &__right {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+
+      div {
+        display: flex;
+
+        p {
+          margin-right: 2rem;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

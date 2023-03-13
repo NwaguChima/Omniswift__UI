@@ -25,7 +25,7 @@ const Result: React.FC<ResultProps> = () => {
           className={styles.result__passport}
         />
       </header>
-      <main>
+      <main className={styles.resultBody}>
         <div className={styles.resultBody__top}>
           <div className={styles.resultBody__top__left}>
             <div>
