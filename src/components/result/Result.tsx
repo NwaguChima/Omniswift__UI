@@ -41,7 +41,7 @@ const Result: React.FC<ResultProps> = ({ data, columns }) => {
         <div className={styles.resultBody__top}>
           <div className={styles.resultBody__top__left}>
             <div>
-              <p>Matric No:</p>
+              <p>Name:</p>
               <span>Chukwuma James Nnamdi</span>
             </div>
             <div>
@@ -125,6 +125,16 @@ const Result: React.FC<ResultProps> = ({ data, columns }) => {
               <p>2.71</p>
               <p>2.71</p>
             </div>
+          </div>
+
+          <p className={styles.remarks}>
+            <span>Remark:</span>
+            <span>Pass</span>
+          </p>
+
+          <div className={styles.signature}>
+            <span>_________________________</span>
+            <p>Registrar</p>
           </div>
         </div>
       </main>
