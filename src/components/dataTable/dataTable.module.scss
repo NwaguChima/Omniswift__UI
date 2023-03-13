@@ -12,7 +12,7 @@
 
 .table__wrapper {
   overflow-y: scroll;
-  height: 60vh !important;
+  max-height: 60vh !important;
 }
 
 .table {

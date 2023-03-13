@@ -13,19 +13,18 @@ import {
   useFilterStudentsMutation,
 } from '../../feature/api/apiSlice';
 import { toast } from 'react-toastify';
+import { fetchStudentList } from '../../feature/student/studentSlice';
 
 interface FormFilterProps {}
 const FormFilter: React.FC<FormFilterProps> = () => {
   const filters = useSelector(selectFilter);
   const dispatch = useDispatch();
-  const [filterStudents, { isLoading: filterIsLoading }] =
-    useFilterStudentsMutation();
+  const [filterStudents] = useFilterStudentsMutation();
 
   function handleOption(option: SingleValue<OptionType>) {
     dispatch(setFilter(option as ISetFilterPayload));
   }
 
-  console.log('filters', filters);
   const {
     data: ages,
     isLoading: agesIsLoading,
@@ -57,13 +56,47 @@ const FormFilter: React.FC<FormFilterProps> = () => {
   async function handleFilter(e: any) {
     e.preventDefault();
     let canSubmit = Object.values(filters).some(Boolean);
+    dispatch(
+      fetchStudentList({
+        status: 'loading',
+        error: null,
+      })
+    );
 
     if (!canSubmit) {
       toast.error('Please select at least one filter');
       return;
     }
-    console.log('response===--->>>>>>.', canSubmit);
-    // const response = await filterStudents(filters);
+
+    try {
+      const response: any = await filterStudents(filters);
+      let message = response.data.message;
+      if (message.toLowerCase().includes('successful')) {
+        dispatch(
+          fetchStudentList({
+            students: response.data.data.students,
+            status: 'success',
+            error: null,
+          })
+        );
+      } else {
+        dispatch(
+          fetchStudentList({
+            students: [],
+            status: 'success',
+            error: 'No student record match your filter',
+          })
+        );
+      }
+    } catch (error) {
+      dispatch(
+        fetchStudentList({
+          students: [],
+          status: 'failed',
+          error,
+        })
+      );
+    }
   }
 
   return (

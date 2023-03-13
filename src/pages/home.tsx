@@ -30,7 +30,16 @@ const Home: React.FC<HomeProps> = () => {
       </div>
     );
   } else if (status === 'success') {
-    content = <DataTable data={data} columns={getTableColumns()} />;
+    if (data.length > 0) {
+      content = <DataTable data={data} columns={getTableColumns()} />;
+    } else {
+      content = (
+        <>
+          <DataTable data={data} columns={getTableColumns()} />
+          <div className={styles.error}>Error: {`${error}`}</div>
+        </>
+      );
+    }
   }
 
   return (

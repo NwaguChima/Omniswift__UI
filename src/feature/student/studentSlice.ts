@@ -11,7 +11,9 @@ export const studentSlice = createSlice({
   initialState,
   reducers: {
     fetchStudentList(state, action) {
-      state.list = action.payload.students;
+      state.list = action.payload.students
+        ? action.payload.students
+        : state.list;
       state.status = action.payload.status;
       state.error = action.payload.error;
     },

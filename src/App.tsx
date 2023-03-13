@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useGetStudentsQuery } from './feature/api/apiSlice';
 import { fetchStudentList } from './feature/student/studentSlice';
@@ -14,19 +15,21 @@ function App() {
     isError,
   } = useGetStudentsQuery('');
 
-  dispatch(
-    fetchStudentList({
-      students,
-      status: isLoading
-        ? 'loading'
-        : isError
-        ? 'failed'
-        : isSuccess
-        ? 'success'
-        : 'idle',
-      error,
-    })
-  );
+  useEffect(() => {
+    dispatch(
+      fetchStudentList({
+        students,
+        status: isLoading
+          ? 'loading'
+          : isError
+          ? 'failed'
+          : isSuccess
+          ? 'success'
+          : 'idle',
+        error,
+      })
+    );
+  }, [isLoading, isError, isSuccess, error, students, dispatch]);
 
   return (
     <div>
