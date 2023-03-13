@@ -51,3 +51,59 @@ export function getTableColumns() {
     },
   ];
 }
+
+export function getResColumns() {
+  return [
+    {
+      Header: 'S/N',
+      accessor: 'id',
+    },
+    {
+      Header: 'Course Code',
+      accessor: 'courseCode',
+    },
+    {
+      Header: 'Course Title',
+      accessor: 'courseTitle',
+    },
+    {
+      Header: 'Unit',
+      accessor: 'unit',
+    },
+    {
+      Header: 'Grade',
+      accessor: 'grade',
+    },
+    {
+      Header: 'Total Point',
+      accessor: 'totalPoint',
+    },
+  ];
+}
+
+export const resCols = [
+  {
+    Header: 'S/N',
+    accessor: 'id',
+  },
+  {
+    Header: 'Course Code',
+    accessor: 'courseCode',
+  },
+  {
+    Header: 'Course Title',
+    accessor: 'courseTitle',
+  },
+  {
+    Header: 'Unit',
+    accessor: 'unit',
+  },
+  {
+    Header: 'Grade',
+    accessor: 'grade',
+  },
+  {
+    Header: 'Total Point',
+    accessor: 'totalPoint',
+  },
+];

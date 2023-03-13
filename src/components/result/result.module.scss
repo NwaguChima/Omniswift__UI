@@ -73,4 +73,94 @@
       }
     }
   }
+
+  &__bottom {
+    margin-top: 5rem;
+  }
+}
+
+// Table styles --------------------------
+
+.table {
+  width: 100%;
+  position: relative;
+
+  @media only screen and (max-width: 1300px) {
+    width: 1150px;
+  }
+
+  &__head {
+    position: sticky;
+    top: 0;
+    width: 90% !important;
+
+    th {
+      text-align: start;
+      font-size: 14px;
+      line-height: 17px;
+      padding-bottom: 18px;
+
+      padding: 18px 25px;
+      white-space: nowrap;
+      background-color: var.$blue;
+      color: var.$white_bg;
+      font-weight: 400;
+      letter-spacing: 0.75px;
+    }
+  }
+
+  &__body {
+    tr {
+      &:nth-child(odd) {
+        background-color: #f2f2f2;
+      }
+
+      td {
+        font-size: 14px;
+        line-height: 22px;
+        padding: 25px 25px;
+        white-space: nowrap;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 180px !important;
+        letter-spacing: 0.75px;
+      }
+    }
+  }
+}
+
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 98.5% !important;
+}
+
+.center {
+  padding-left: 40px !important;
+}
+
+// Average styles --------------------------
+.average {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-top: 4rem;
+
+  &__top,
+  &__bottom {
+    display: flex;
+    width: fit-content;
+
+    p {
+      width: 12rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+      padding: 1rem;
+    }
+  }
+
+  &__top {
+    background-color: var.$blue;
+    color: white;
+  }
 }

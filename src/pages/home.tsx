@@ -7,7 +7,7 @@ import {
 } from '../feature/student/studentSlice';
 import DataTable from '../components/dataTable/DataTable';
 import FormFilter from '../components/formFilter/FormFilter';
-import { getTableColumns } from '../utils/columns';
+import { getResColumns, getTableColumns } from '../utils/columns';
 import styles from './home.module.scss';
 import Spinner from '../components/spinner/Spinner';
 import Result from '../components/result/Result';
@@ -52,7 +52,27 @@ const Home: React.FC<HomeProps> = () => {
         <FormFilter />
         {content}
       </main>
-      <Result />
+      <Result
+        data={[
+          {
+            id: 1,
+            courseCode: 'PDE 701',
+            courseTitle: 'Measurement and Evaluation',
+            unit: 3,
+            grade: 'A',
+            totalPoint: 9,
+          },
+          {
+            id: 1,
+            courseCode: 'PDE 701',
+            courseTitle: 'Measurement and Evaluation',
+            unit: 3,
+            grade: 'A',
+            totalPoint: 9,
+          },
+        ]}
+        columns={getResColumns()}
+      />
     </div>
   );
 };
