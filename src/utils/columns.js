@@ -1,4 +1,5 @@
 import styles from '../components/dataTable/dataTable.module.scss';
+import ResultWrapper from '../components/resultWrapper/ResultWrapper.tsx';
 
 export function getTableColumns() {
   return [
@@ -42,11 +43,8 @@ export function getTableColumns() {
       Header: 'Action',
       accessor: '',
       Cell: ({ row }) => {
-        return (
-          <a href="" className={styles.action}>
-            Download Result
-          </a>
-        );
+        let id = row.original.id;
+        return <ResultWrapper id={id} />;
       },
     },
   ];

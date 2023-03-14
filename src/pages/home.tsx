@@ -52,27 +52,6 @@ const Home: React.FC<HomeProps> = () => {
         <FormFilter />
         {content}
       </main>
-      <Result
-        data={[
-          {
-            id: 1,
-            courseCode: 'PDE 701',
-            courseTitle: 'Measurement and Evaluation',
-            unit: 3,
-            grade: 'A',
-            totalPoint: 9,
-          },
-          {
-            id: 1,
-            courseCode: 'PDE 701',
-            courseTitle: 'Measurement and Evaluation',
-            unit: 3,
-            grade: 'A',
-            totalPoint: 9,
-          },
-        ]}
-        columns={getResColumns()}
-      />
     </div>
   );
 };

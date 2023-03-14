@@ -1,0 +1,30 @@
+@use '../../styles/variables' as var;
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  &__content {
+    background-color: transparent;
+    margin-top: 15rem;
+    margin-bottom: 3rem;
+    min-width: 90vw !important;
+    overflow-x: scroll;
+
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+  }
+}

@@ -4,6 +4,7 @@ import { useGetStudentsQuery } from './feature/api/apiSlice';
 import { fetchStudentList } from './feature/student/studentSlice';
 import Home from './pages/home';
 import './styles/global.scss';
+import '@progress/kendo-theme-default/dist/all.css';
 
 function App() {
   const dispatch = useDispatch();
