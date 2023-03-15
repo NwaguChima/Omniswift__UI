@@ -3,7 +3,6 @@ import { useGetStudentResultMutation } from '../../feature/api/apiSlice';
 import { getResColumns } from '../../utils/columns';
 import Result from '../result/Result';
 import styles from '../result/result.module.scss';
-import { savePDF } from '@progress/kendo-react-pdf';
 import Modal from './Modal';
 import Spinner from '../spinner/Spinner';
 
@@ -16,9 +15,9 @@ const ResultWrapper: React.FC<ResultWrapperProps> = ({ id }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   let [resultData, setResultData] = useState<any>(null);
-  const pdfExportComponent = useRef<any>(null);
+  let [pdfExportBtn, setPdfExportBtn] = useState<any>(null);
 
-  async function handleExportWithComponent() {
+  async function loadResult() {
     setLoading(true);
     setIsModalOpen(true);
     try {
@@ -31,10 +30,8 @@ const ResultWrapper: React.FC<ResultWrapperProps> = ({ id }) => {
     }
   }
 
-  // function handleModal() {}
-
   return (
-    <a className={styles.action} onClick={handleExportWithComponent}>
+    <a className={styles.action} onClick={loadResult}>
       Download Result
       {isModalOpen && (
         <Modal
@@ -48,9 +45,7 @@ const ResultWrapper: React.FC<ResultWrapperProps> = ({ id }) => {
             ) : (
               <>
                 <div className={styles.resultBtn}>
-                  <button onClick={handleExportWithComponent}>
-                    Export PDF
-                  </button>
+                  <button onClick={() => pdfExportBtn()}>Export PDF</button>
                   <button
                     onClick={() => {
                       window.location.reload();
@@ -63,6 +58,7 @@ const ResultWrapper: React.FC<ResultWrapperProps> = ({ id }) => {
                   data={resultData}
                   columns={getResColumns()}
                   rowsData={resultData.data?.result}
+                  setPdfExportBtn={setPdfExportBtn}
                 />
               </>
             )

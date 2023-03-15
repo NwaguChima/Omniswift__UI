@@ -2,32 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { useTable } from 'react-table';
 import styles from './result.module.scss';
 import { PDFExport } from '@progress/kendo-react-pdf';
-let testD = [
-  {
-    id: 1,
-    coursecode: 'PDE 701',
-    title: 'Measurement and Evaluation',
-    credit_unit: 3,
-    grade: 'A',
-    total_point: 9,
-  },
-  {
-    id: 1,
-    coursecode: 'PDE 701',
-    title: 'Measurement and Evaluation',
-    credit_unit: 3,
-    grade: 'A',
-    total_point: 9,
-  },
-];
 
-const Result = ({ data, columns, rowsData }) => {
+const Result = ({ data, columns, rowsData, setPdfExportBtn }) => {
   const [editedData, setEditedData] = useState([]);
+  function handleExportWithComponent(event) {
+    pdfExportComponent.current?.save();
+  }
+
   useEffect(() => {
     const newData = rowsData.map((row, index) => {
       return { ...row, id: index + 1 };
     });
     setEditedData(newData);
+    setPdfExportBtn(() => handleExportWithComponent);
   }, [rowsData]);
 
   const pdfExportComponent = useRef(null);
@@ -39,10 +26,6 @@ const Result = ({ data, columns, rowsData }) => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
-
-  const handleExportWithComponent = (event) => {
-    pdfExportComponent.current?.save();
-  };
 
   return (
     <PDFExport ref={pdfExportComponent}>
@@ -154,7 +137,7 @@ const Result = ({ data, columns, rowsData }) => {
               </div>
             </div>
 
-            <p className={styles.remarks} onClick={handleExportWithComponent}>
+            <p className={styles.remarks}>
               <span>Remark:</span>
               <span>{data.data.cummulative?.remarks}</span>
             </p>
