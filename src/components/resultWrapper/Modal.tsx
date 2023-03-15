@@ -16,7 +16,7 @@ export const Modal: React.FC<ModalProps> = ({ isOpen, setIsOpen, content }) => {
       className={styles.modal}
       onClick={(e: any) => {
         if (e.target.classList.contains(styles.modal)) {
-          setIsOpen(false);
+          window.location.reload();
         }
       }}
     >

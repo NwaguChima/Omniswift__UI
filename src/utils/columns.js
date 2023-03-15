@@ -58,15 +58,15 @@ export function getResColumns() {
     },
     {
       Header: 'Course Code',
-      accessor: 'courseCode',
+      accessor: 'coursecode',
     },
     {
       Header: 'Course Title',
-      accessor: 'courseTitle',
+      accessor: 'title',
     },
     {
       Header: 'Unit',
-      accessor: 'unit',
+      accessor: 'credit_unit',
     },
     {
       Header: 'Grade',
@@ -74,34 +74,34 @@ export function getResColumns() {
     },
     {
       Header: 'Total Point',
-      accessor: 'totalPoint',
+      accessor: 'total_point',
     },
   ];
 }
 
-export const resCols = [
-  {
-    Header: 'S/N',
-    accessor: 'id',
-  },
-  {
-    Header: 'Course Code',
-    accessor: 'courseCode',
-  },
-  {
-    Header: 'Course Title',
-    accessor: 'courseTitle',
-  },
-  {
-    Header: 'Unit',
-    accessor: 'unit',
-  },
-  {
-    Header: 'Grade',
-    accessor: 'grade',
-  },
-  {
-    Header: 'Total Point',
-    accessor: 'totalPoint',
-  },
-];
+// export const resCols = [
+//   {
+//     Header: 'S/N',
+//     accessor: 'id',
+//   },
+//   {
+//     Header: 'Course Code',
+//     accessor: 'courseCode',
+//   },
+//   {
+//     Header: 'Course Title',
+//     accessor: 'courseTitle',
+//   },
+//   {
+//     Header: 'Unit',
+//     accessor: 'unit',
+//   },
+//   {
+//     Header: 'Grade',
+//     accessor: 'grade',
+//   },
+//   {
+//     Header: 'Total Point',
+//     accessor: 'totalPoint',
+//   },
+// ];

@@ -5,77 +5,67 @@ import Result from '../result/Result';
 import styles from '../result/result.module.scss';
 import { savePDF } from '@progress/kendo-react-pdf';
 import Modal from './Modal';
+import Spinner from '../spinner/Spinner';
 
 interface ResultWrapperProps {
   id: number;
 }
 
 const ResultWrapper: React.FC<ResultWrapperProps> = ({ id }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [getStudentResult] = useGetStudentResultMutation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  let [resultData, setResultData] = useState<any>(null);
   const pdfExportComponent = useRef<any>(null);
 
-  async function handleExportWithComponent(event: any) {
-    console.log('event', event);
+  async function handleExportWithComponent() {
+    setLoading(true);
+    setIsModalOpen(true);
     try {
       const result: any = await getStudentResult(id);
-      console.log('result=========>>>>>>>>', result.data);
+      setResultData(result.data);
     } catch (error) {
       console.log('error', error);
     } finally {
-      savePDF(pdfExportComponent.current, {
-        paperSize: 'A4',
-      });
+      setLoading(false);
     }
   }
 
-  function handleModal() {
-    setIsModalOpen(true);
-  }
-
-  console.log('isModalOpen', isModalOpen);
+  // function handleModal() {}
 
   return (
-    <a className={styles.action} onClick={handleModal}>
+    <a className={styles.action} onClick={handleExportWithComponent}>
       Download Result
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
           setIsOpen={setIsModalOpen}
           content={
-            <>
-              <div>
-                <button onClick={handleExportWithComponent}>Export PDF</button>
-                <button
-                  onClick={() => {
-                    setIsModalOpen(false);
-                  }}
-                >
-                  Close Result
-                </button>
+            loading ? (
+              <div className={styles.loadingText}>
+                <Spinner />
               </div>
-              <Result
-                data={[
-                  {
-                    id: 1,
-                    courseCode: 'PDE 701',
-                    courseTitle: 'Measurement and Evaluation',
-                    unit: 3,
-                    grade: 'A',
-                    totalPoint: 9,
-                  },
-                  {
-                    id: 1,
-                    courseCode: 'PDE 701',
-                    courseTitle: 'Measurement and Evaluation',
-                    unit: 3,
-                    grade: 'A',
-                    totalPoint: 9,
-                  },
-                ]}
-                columns={getResColumns()}
-              />
-            </>
+            ) : (
+              <>
+                <div className={styles.resultBtn}>
+                  <button onClick={handleExportWithComponent}>
+                    Export PDF
+                  </button>
+                  <button
+                    onClick={() => {
+                      window.location.reload();
+                    }}
+                  >
+                    Close Result
+                  </button>
+                </div>
+                <Result
+                  data={resultData}
+                  columns={getResColumns()}
+                  rowsData={resultData.data?.result}
+                />
+              </>
+            )
           }
         />
       )}

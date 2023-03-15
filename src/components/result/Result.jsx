@@ -1,37 +1,54 @@
-import React, { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTable } from 'react-table';
-import LOGO from '../../assets/logo.svg';
-import PASSPORT from '../../assets/passport.svg';
 import styles from './result.module.scss';
 import { PDFExport } from '@progress/kendo-react-pdf';
+let testD = [
+  {
+    id: 1,
+    coursecode: 'PDE 701',
+    title: 'Measurement and Evaluation',
+    credit_unit: 3,
+    grade: 'A',
+    total_point: 9,
+  },
+  {
+    id: 1,
+    coursecode: 'PDE 701',
+    title: 'Measurement and Evaluation',
+    credit_unit: 3,
+    grade: 'A',
+    total_point: 9,
+  },
+];
 
-interface ResultProps {
-  data: any;
-  columns: any;
-}
+const Result = ({ data, columns, rowsData }) => {
+  const [editedData, setEditedData] = useState([]);
+  useEffect(() => {
+    const newData = rowsData.map((row, index) => {
+      return { ...row, id: index + 1 };
+    });
+    setEditedData(newData);
+  }, [rowsData]);
 
-const Result: React.FC<ResultProps> = ({ data, columns }) => {
-  const pdfExportComponent = useRef<any>(null);
+  const pdfExportComponent = useRef(null);
 
   const tableInstance = useTable({
-    data,
+    data: editedData,
     columns,
   });
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
 
-  const handleExportWithComponent = (event: any) => {
+  const handleExportWithComponent = (event) => {
     pdfExportComponent.current?.save();
   };
-
-  // return null;
 
   return (
     <PDFExport ref={pdfExportComponent}>
       <div className={styles.result}>
         <header>
-          <img src={LOGO} alt="logo" className={styles.result__logo} />
+          <img src={data.logo} alt="logo" className={styles.result__logo} />
           <div>
             <h1>FREMONT COLLEGE OF EDUCATION</h1>
             <p>
@@ -42,7 +59,7 @@ const Result: React.FC<ResultProps> = ({ data, columns }) => {
             <p>Student First Semester Statement Of Result</p>
           </div>
           <img
-            src={PASSPORT}
+            src={data.profile_picture}
             alt="passport"
             className={styles.result__passport}
           />
@@ -52,21 +69,21 @@ const Result: React.FC<ResultProps> = ({ data, columns }) => {
             <div className={styles.resultBody__top__left}>
               <div>
                 <p>Name:</p>
-                <span>Chukwuma James Nnamdi</span>
+                <span>{data.data.firstname + ' ' + data.data.surname}</span>
               </div>
               <div>
                 <p>Level:</p>
-                <span>100 level</span>
+                <span>{data.data.level}</span>
               </div>
             </div>
             <div className={styles.resultBody__top__right}>
               <div>
                 <p>Reg No:</p>
-                <span>FCE/PGDE/2021/002</span>
+                <span>{data.data.reg_no}</span>
               </div>
               <div>
                 <p>Session:</p>
-                <span>2022/2023</span>
+                <span>{data.data.session}</span>
               </div>
             </div>
           </div>
@@ -128,18 +145,18 @@ const Result: React.FC<ResultProps> = ({ data, columns }) => {
                 <p>GPATD</p>
               </div>
               <div className={styles.average__bottom}>
-                <p>028</p>
-                <p>028</p>
-                <p>067</p>
-                <p>067</p>
-                <p>2.71</p>
-                <p>2.71</p>
+                <p>{data.data.cummulative?.unts}</p>
+                <p>{data.data.cummulative?.untd}</p>
+                <p>{data.data.cummulative?.gpts}</p>
+                <p>{data.data.cummulative?.gptd}</p>
+                <p>{data.data.cummulative?.gpats}</p>
+                <p>{data.data.cummulative?.gpatd}</p>
               </div>
             </div>
 
             <p className={styles.remarks} onClick={handleExportWithComponent}>
               <span>Remark:</span>
-              <span>Pass</span>
+              <span>{data.data.cummulative?.remarks}</span>
             </p>
 
             <div className={styles.signature}>
