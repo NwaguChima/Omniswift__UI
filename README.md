@@ -16,3 +16,6 @@ Basically we can see the list of students and also search students. We can gener
 - Kendo UI package (for react to pdf)
 - React select
 - React Table
+
+### Live-url
+https://result-checker.onrender.com/
